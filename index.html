@@ -77,8 +77,10 @@ footer .logo img{height:52px}
 .hl{display:inline-block;background:var(--wine);padding:0 .14em .06em;border-radius:6px;transform:rotate(-1.5deg);border:1px solid var(--wine-hi);box-shadow:0 14px 40px rgba(0,0,0,.35)}
 .hero .sub{color:var(--cream);opacity:.85;max-width:52ch;margin:22px auto 30px;font-size:clamp(15px,1.4vw,17px);animation:rise 1s .5s cubic-bezier(.2,.7,.2,1) both}
 .hero .btn{animation:rise 1s .65s cubic-bezier(.2,.7,.2,1) both}
-.hero .scroll{position:absolute;left:50%;bottom:clamp(28px,4vw,48px);transform:translateX(-50%);width:22px;height:36px;border:1.5px solid rgba(238,235,228,.5);border-radius:12px}
-.hero .scroll::after{content:"";position:absolute;left:50%;top:7px;width:3px;height:7px;margin-left:-1.5px;border-radius:2px;background:var(--cream);animation:wheel 1.8s ease-in-out infinite}
+.hero .scroll{position:absolute;left:50%;bottom:clamp(24px,4vw,44px);transform:translateX(-50%);display:grid;place-items:center;width:44px;height:44px;border-radius:50%;border:1px solid rgba(238,235,228,.3);color:var(--cream);animation:blinkdown 1.6s ease-in-out infinite}
+.hero .scroll svg{width:20px;height:20px}
+@keyframes blinkdown{0%,100%{opacity:.25;transform:translate(-50%,-4px)}50%{opacity:1;transform:translate(-50%,6px)}}
+@media (max-width:640px){.hero{min-height:0;padding-block:140px 110px}.hero .sub{margin-bottom:24px}.hero .scroll{bottom:28px}}
 @keyframes rise{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
 @keyframes wheel{0%{opacity:0;transform:translateY(0)}30%{opacity:1}100%{opacity:0;transform:translateY(12px)}}
 
@@ -185,10 +187,85 @@ section{padding-block:clamp(70px,10vw,130px)}
 .svc-text .btn{justify-self:start;margin-top:8px}
 @media (max-width:900px){.svc{grid-template-columns:1fr}.svc.flip .svc-media{order:0}.svc-media{max-width:460px;justify-self:center}.f1{left:-8px}.f2{right:-8px}}
 
-/* WhatsApp flutuante */
-.wa-float{position:fixed;right:18px;bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:60;width:58px;height:58px;border-radius:50%;display:grid;place-items:center;background:#25d366;color:#fff;box-shadow:0 10px 30px rgba(0,0,0,.4);transition:transform .2s}
-.wa-float:hover{transform:scale(1.08)}
-.wa-float svg{width:30px;height:30px}
+/* MÉTODO (bento, como "Our Specialities") */
+.bento{display:grid;grid-template-columns:1.35fr 1fr;gap:16px}
+.tile{border-radius:var(--radius);padding:clamp(24px,3vw,38px);min-height:300px;display:flex;flex-direction:column;justify-content:space-between;gap:24px;position:relative;overflow:hidden;min-width:0}
+.tile .big{font-family:var(--display);font-size:clamp(34px,5vw,68px);letter-spacing:-.04em;line-height:1}
+.tile .lbl{font-family:var(--display);font-size:13px;text-transform:uppercase;letter-spacing:.04em;margin-top:8px}
+.tile p{font-size:15px;max-width:44ch}
+.t1{background:linear-gradient(90deg,rgba(18,7,9,.92) 0%,rgba(18,7,9,.55) 55%,rgba(18,7,9,.15) 100%),url(assets/foto-microfone.webp) 70% 25%/cover,var(--ink-2);border:1px solid var(--ink-3)}
+.t1 p,.t2 p{color:var(--cream-dim)}
+.t2{background:var(--ink-2);border:1px solid var(--ink-3)}
+.t3{padding-inline:0;justify-content:center;background:radial-gradient(120% 90% at 50% 50%,rgba(87,6,23,.55),rgba(42,2,10,.92)),url(assets/bg-pattern-vinho.jpg) center/cover no-repeat;border:1px solid rgba(140,22,48,.5)}
+.t3 .lbl{padding-inline:clamp(24px,3vw,38px);color:var(--cream);opacity:.8}
+.rows{display:grid;gap:12px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.row{display:flex;width:max-content;gap:10px;animation:slide 30s linear infinite}
+.row.rev{animation-direction:reverse;animation-duration:36s}
+.row span{flex:none;font-size:14px;font-weight:600;padding:10px 18px;border-radius:999px;border:1px solid rgba(238,235,228,.4);color:var(--cream);background:rgba(18,7,9,.35);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.row span:nth-child(3n+1){background:var(--cream);color:var(--wine);border-color:var(--cream)}
+.t3:hover .row{animation-play-state:paused}
+.t4{background:var(--cream);color:var(--wine);text-align:right;align-items:flex-end}
+.pills{display:flex;flex-wrap:wrap;gap:10px;align-content:center;justify-content:center;flex:1}
+.pills span{font-size:13px;font-weight:600;padding:8px 16px;border-radius:999px;background:var(--cream);color:var(--wine);transform:rotate(var(--r,0deg));box-shadow:0 6px 18px rgba(0,0,0,.25)}
+@media (max-width:820px){.bento{grid-template-columns:1fr}.tile{min-height:240px}}
+
+/* VALORES: lista editorial com varredura vinho no hover */
+.values{position:relative;overflow:hidden;border-radius:clamp(24px,4vw,48px);background:var(--ink-2);border:1px solid var(--ink-3);padding-inline:clamp(20px,5vw,70px)}
+.values .za{position:absolute;right:-10%;top:50%;width:min(40vw,500px);opacity:.035;transform:translateY(-50%);animation:float 14s ease-in-out infinite;pointer-events:none}
+@keyframes float{0%,100%{transform:translateY(-50%) rotate(-4deg)}50%{transform:translateY(-54%) rotate(3deg)}}
+.vwrap{position:relative;display:grid;grid-template-columns:.8fr 1.6fr;gap:clamp(30px,5vw,80px);align-items:start}
+.vwrap .intro h2{font-size:clamp(28px,4vw,50px);margin-top:18px}
+.vwrap .intro p{color:var(--cream-dim);margin-top:18px;max-width:34ch;font-size:15px}
+.vlist{list-style:none;margin:0;padding:0;border-bottom:1px solid var(--ink-3)}
+.vlist li{position:relative;display:grid;grid-template-columns:1fr auto;align-items:center;gap:20px;padding:clamp(20px,2.6vw,30px) clamp(12px,2vw,24px);border-top:1px solid var(--ink-3);overflow:hidden;cursor:default}
+.vlist li::before{content:"";position:absolute;inset:0;z-index:0;background:linear-gradient(90deg,var(--wine),rgba(140,22,48,.85));transform:scaleX(0);transform-origin:left;transition:transform .6s cubic-bezier(.3,.8,.2,1)}
+.vlist li:hover::before,.vlist li.lit::before{transform:scaleX(1)}
+.vlist li > *{position:relative;z-index:1}
+.vlist h3{font-size:clamp(24px,3.4vw,46px);letter-spacing:-.04em;transition:transform .5s cubic-bezier(.3,.8,.2,1)}
+.vlist li:hover h3,.vlist li.lit h3{transform:translateX(12px)}
+.vlist p{max-width:26ch;text-align:right;font-size:14px;color:var(--cream-dim);transition:color .4s}
+.vlist li:hover p,.vlist li.lit p{color:var(--cream)}
+@media (max-width:820px){.vwrap{grid-template-columns:1fr}.vlist li{grid-template-columns:1fr}.vlist p{text-align:left}}
+
+/* EQUIPE (creme) */
+.team{background:var(--cream);color:var(--wine);border-radius:clamp(24px,4vw,48px)}
+.team .head p{color:rgba(87,6,23,.75)}
+.people{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.person{display:grid;gap:16px;min-width:0;align-content:start}
+.photo{position:relative;aspect-ratio:4/5;border-radius:var(--radius);overflow:hidden;background:linear-gradient(160deg,var(--wine-hi),var(--wine) 55%,#2a020a);max-width:100%}
+.photo img{width:100%;height:100%;object-fit:cover}
+.photo .ph{position:absolute;inset:0;display:grid;place-items:center;align-content:center;gap:8px;color:var(--cream)}
+.photo .ph b{font-family:var(--display);font-size:clamp(70px,9vw,120px);font-weight:300;line-height:1;opacity:.9}
+.photo .ph small{font-size:11px;letter-spacing:.14em;text-transform:uppercase;opacity:.7}
+.photo .ig{position:absolute;left:14px;bottom:14px;display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;padding:8px 14px;border-radius:999px;background:var(--cream);color:var(--wine);transition:.2s}
+.photo .ig:hover{background:var(--wine);color:var(--cream)}
+.person h3{font-size:clamp(20px,2vw,26px)}
+.person .role{font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;margin-top:6px}
+.person p{color:rgba(87,6,23,.8);font-size:15px}
+@media (max-width:900px){.people{grid-template-columns:1fr;max-width:460px;margin-inline:auto}}
+
+/* CONTATO */
+.cta{position:relative;overflow:hidden;border-radius:clamp(24px,4vw,48px);background:linear-gradient(rgba(87,6,23,.88),rgba(87,6,23,.88)),url(assets/bg-curva-vinho.jpg) right center/cover,var(--wine);padding:clamp(48px,8vw,100px) clamp(20px,5vw,60px);text-align:center;display:grid;justify-items:center;gap:22px}
+.cta h2{font-size:clamp(28px,4.6vw,60px);max-width:18ch}
+.cta p{max-width:56ch;color:var(--cream-dim);font-size:clamp(15px,1.4vw,17px)}
+.cta .btns{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:8px}
+.phone{font-family:var(--display);font-size:clamp(16px,2vw,22px);letter-spacing:-.01em;user-select:all}
+
+/* FOOTER */
+footer{padding-block:60px 40px}
+.foot{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:30px;padding-bottom:40px;border-bottom:1px solid var(--ink-3)}
+.foot h4{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--cream-dim);margin:0 0 14px;font-weight:600}
+.foot ul{list-style:none;margin:0;padding:0;display:grid;gap:8px;font-size:15px}
+.foot ul a:hover{color:var(--wine-hi)}
+.foot .slogan{font-family:var(--display);font-size:clamp(18px,2vw,24px);letter-spacing:-.02em;margin-top:18px;max-width:18ch}
+.legal{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-top:24px;font-size:13px;color:var(--cream-dim)}
+@media (max-width:760px){.foot{grid-template-columns:1fr}}
+
+/* Barra flutuante "Fale com nossa equipe" */
+.dock{position:fixed;left:0;right:0;bottom:0;z-index:60;display:flex;justify-content:center;padding:12px 16px calc(12px + env(safe-area-inset-bottom,0px));background:rgba(18,7,9,.35);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-top:1px solid rgba(238,235,228,.08);transition:background .45s ease,border-color .45s ease}
+.dock.moving{background:rgba(18,7,9,.94);border-top-color:var(--ink-3)}
+.dock .btn{box-shadow:0 10px 30px rgba(0,0,0,.35)}
+footer{padding-bottom:calc(90px + env(safe-area-inset-bottom,0px))!important}
 
 /* animação de entrada: parte de um estado visível */
 .reveal{transition:transform 1s cubic-bezier(.2,.7,.2,1),opacity 1s ease}
@@ -196,7 +273,7 @@ section{padding-block:clamp(70px,10vw,130px)}
 .bento .reveal:nth-child(2),.people .person:nth-child(2){transition-delay:.12s}
 .bento .reveal:nth-child(3){transition-delay:.24s}
 .bento .reveal:nth-child(4){transition-delay:.36s}
-@media (prefers-reduced-motion:reduce){.marquee span,.ticker .track,.row,.hero::before,.values .za,.tag span,.hero h1 .w,.hero .sub,.hero .btn,.float,.bars i,.rec::before{animation:none}.reveal.pre{opacity:1}.reveal,.reveal.pre{transform:none;transition:none}html{scroll-behavior:auto}}
+@media (prefers-reduced-motion:reduce){.marquee span,.ticker .track,.row,.hero::before,.values .za,.tag span,.hero h1 .w,.hero .sub,.hero .btn,.hero .scroll,.float,.bars i,.rec::before{animation:none}.reveal.pre{opacity:1}.reveal,.reveal.pre{transform:none;transition:none}html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
@@ -228,7 +305,7 @@ section{padding-block:clamp(70px,10vw,130px)}
       <p class="sub">No encontro entre organização e estratégia, a Zanis une planejamento sólido a uma linguagem visual autoral.</p>
       <a class="btn" href="#contato">Agendar diagnóstico<span class="arr"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a>
     </div>
-    <a class="scroll" href="#sobre" aria-label="Rolar para Sobre"></a>
+    <a class="scroll" href="#sobre" aria-label="Rolar para Sobre"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a>
   </section>
 
   <!-- SOBRE -->
@@ -262,7 +339,6 @@ section{padding-block:clamp(70px,10vw,130px)}
     <div class="wrap">
       <div class="head">
         <div class="t"><span class="tag"><span>Serviços</span></span><h2>O que fazemos</h2></div>
-        <a class="btn ghost" data-wa href="#" target="_blank" rel="noopener">Falar com a equipe<span class="arr"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a>
       </div>
       <div class="stabs"><nav aria-label="Serviços">
         <a href="#svc-redes" class="on"><b>01</b><span>Redes sociais</span></a>
@@ -456,9 +532,9 @@ section{padding-block:clamp(70px,10vw,130px)}
   </div>
 </footer>
 
-<a class="wa-float" data-wa href="#" target="_blank" rel="noopener" aria-label="Falar com a Zanis no WhatsApp">
-  <svg viewBox="0 0 32 32" fill="currentColor"><path d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3zm0 23.7c-2 0-4-.6-5.7-1.6l-.4-.2-3.9 1 1-3.8-.3-.4A10.7 10.7 0 1 1 16 26.7zm5.9-8c-.3-.2-1.9-1-2.2-1-.3-.1-.5-.2-.7.2l-1 1.2c-.2.2-.4.2-.7.1a8.8 8.8 0 0 1-4.4-3.8c-.3-.6.3-.5.9-1.7.1-.2 0-.4 0-.5l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.8s1.2 3.2 1.4 3.5c.2.2 2.4 3.6 5.8 5 2.1.9 3 1 4 .8.7-.1 1.9-.8 2.2-1.5.3-.8.3-1.4.2-1.5l-.6-.3z"/></svg>
-</a>
+<div class="dock" aria-label="Contato rápido">
+  <a class="btn" data-wa href="#" target="_blank" rel="noopener">Fale com nossa equipe<span class="arr"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a>
+</div>
 
 <script>
   // Mesmo link de WhatsApp em todos os botões
@@ -495,6 +571,27 @@ section{padding-block:clamp(70px,10vw,130px)}
     var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.remove("pre"); e.target.classList.add("in"); io.unobserve(e.target);} }); }, {threshold:.12});
     document.querySelectorAll(".reveal, .head .tag").forEach(function(el){ if(el.getBoundingClientRect().top > innerHeight){ el.classList.add("pre"); io.observe(el);} else el.classList.add("in"); });
   } else document.querySelectorAll(".reveal").forEach(function(el){ el.classList.add("in"); });
+
+  // Barra flutuante: escura enquanto rola, translúcida parada
+  var dock = document.querySelector(".dock"), dockT;
+  window.addEventListener("scroll", function(){
+    dock.classList.add("moving");
+    clearTimeout(dockT);
+    dockT = setTimeout(function(){ dock.classList.remove("moving"); }, 260);
+  }, {passive:true});
+
+  // Valores: acende um por vez conforme a rolagem
+  var vlist = document.querySelector(".vlist"), vitems = vlist ? vlist.querySelectorAll("li") : [];
+  function litValues(){
+    if(!vlist) return;
+    var mid = innerHeight * .55, r = vlist.getBoundingClientRect(), cur = null;
+    if(r.top < mid && r.bottom > mid){
+      vitems.forEach(function(li){ var b = li.getBoundingClientRect(); if(b.top <= mid && b.bottom > mid) cur = li; });
+    }
+    vitems.forEach(function(li){ li.classList.toggle("lit", li === cur); });
+  }
+  window.addEventListener("scroll", litValues, {passive:true});
+  litValues();
 
   // Abas dos serviços: acompanham a rolagem
   var stabs = document.querySelectorAll(".stabs a"), spill = document.querySelector(".stabs .pill");
