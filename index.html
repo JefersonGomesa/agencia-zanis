@@ -1,0 +1,447 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Agência Zanis</title>
+<meta name="description" content="Zanis: agência de marketing estratégico. Para marcas que querem ser memoráveis.">
+<link rel="icon" href="assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;500;600&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap">
+<style>
+/* Layout: escuro como a referência, com o vinho Zanis no lugar do laranja; seções creme para respirar. */
+:root{
+  --ink:#120709;          /* fundo, preto puxado pro vinho */
+  --ink-2:#1c0c10;        /* cards sobre o fundo escuro */
+  --ink-3:#2a1218;        /* bordas e pills */
+  --wine:#570617;         /* cor da marca */
+  --wine-hi:#8c1630;      /* vinho mais claro, só para brilho e destaques sobre o escuro */
+  --cream:#eeebe4;        /* cor da marca */
+  --cream-dim:rgba(238,235,228,.68);
+  --cream-faint:rgba(238,235,228,.12);
+  --display:"Unbounded", "Arial Black", system-ui, sans-serif;
+  --body:"DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --radius:22px;
+  --max:1200px;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--ink);color:var(--cream);font-family:var(--body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--cream);outline-offset:3px;border-radius:6px}
+.wrap{max-width:var(--max);margin-inline:auto;padding-inline:clamp(16px,4vw,40px)}
+h1,h2,h3{font-family:var(--display);font-weight:400;letter-spacing:-.03em;line-height:1.08;margin:0;text-wrap:balance}
+p{margin:0}
+.tag{display:inline-flex;align-items:center;gap:8px;font-family:var(--body);font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:6px 12px;border-radius:999px;background:rgba(140,22,48,.28);color:var(--cream);border:1px solid rgba(140,22,48,.6)}
+.tag::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--wine-hi)}
+.btn{display:inline-flex;align-items:center;gap:12px;font-weight:600;font-size:14px;padding:12px 14px 12px 22px;border-radius:999px;background:var(--wine);color:var(--cream);border:1px solid var(--wine-hi);transition:transform .2s, background .2s}
+.btn:hover{background:var(--wine-hi);transform:translateY(-2px)}
+.btn .arr{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--cream);color:var(--wine)}
+.btn.light{background:var(--cream);color:var(--wine);border-color:var(--cream)}
+.btn.light .arr{background:var(--wine);color:var(--cream)}
+.btn.ghost{background:transparent;border-color:var(--cream-faint)}
+.btn.ghost:hover{background:var(--cream-faint)}
+svg.i{width:16px;height:16px}
+
+/* NAV */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;padding-block:14px;background:linear-gradient(var(--ink),rgba(18,7,9,.85));backdrop-filter:blur(10px)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:600;font-size:20px;letter-spacing:-.02em}
+.logo img{height:44px;width:auto}
+footer .logo img{height:52px}
+.logo .mark{width:34px;height:34px;border-radius:10px;background:var(--wine);display:grid;place-items:center;font-size:16px;border:1px solid var(--wine-hi)}
+.menu{display:flex;gap:4px;padding:5px;border-radius:999px;background:var(--ink-2);border:1px solid var(--ink-3)}
+.menu a{font-size:12px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;padding:8px 14px;border-radius:999px;color:var(--cream-dim);transition:.2s}
+.menu a:hover,.menu a.on{background:var(--ink-3);color:var(--cream)}
+@media (max-width:900px){.menu{display:none}}
+@media (max-width:480px){.nav .btn span.lbl{display:none}.nav .btn{padding:8px}}
+
+/* HERO */
+.hero{position:relative;text-align:center;padding-top:clamp(40px,7vw,90px);overflow:hidden}
+.hero h1{font-size:clamp(34px,6.4vw,84px);max-width:16ch;margin-inline:auto}
+.hl{display:inline-block;background:var(--wine);padding:0 .14em .06em;border-radius:6px;transform:rotate(-1.5deg);border:1px solid var(--wine-hi)}
+.hero .sub{color:var(--cream-dim);max-width:52ch;margin:22px auto 30px;font-size:clamp(15px,1.4vw,17px)}
+.stage{position:relative;margin-top:clamp(30px,5vw,60px);height:clamp(340px,52vw,640px)}
+.stage::before{content:"";position:absolute;inset:14% 0 0;background:linear-gradient(rgba(70,4,18,.82),rgba(70,4,18,.82)),url(assets/bg-pattern-vinho.jpg) center/clamp(420px,46vw,720px) repeat;-webkit-mask-image:linear-gradient(transparent,#000 28%);mask-image:linear-gradient(transparent,#000 28%)}
+.stage::after{content:"";position:absolute;left:0;right:0;bottom:0;height:22%;background:linear-gradient(transparent,var(--ink));z-index:3}
+.marquee{position:absolute;left:0;right:0;top:46%;z-index:1;white-space:nowrap;font-family:var(--display);font-weight:500;font-size:clamp(60px,11vw,170px);letter-spacing:-.04em;color:var(--cream);opacity:.92}
+.marquee span{display:inline-block;animation:slide 38s linear infinite;padding-right:.4em}
+@keyframes slide{to{transform:translateX(-100%)}}
+.founders{position:absolute;inset:0;z-index:2;display:flex;justify-content:center;align-items:flex-end}
+.founders img{height:100%;width:auto;max-width:none;object-fit:contain;object-position:bottom;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 12%,#000 88%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 12%,#000 88%,transparent 100%)}
+.founders svg{height:96%;width:auto;opacity:.75}
+.founders .note{position:absolute;bottom:26%;left:50%;transform:translateX(-50%);z-index:4;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--cream-dim);white-space:nowrap}
+.badge{position:absolute;z-index:4;left:clamp(0px,3vw,40px);bottom:12%;text-align:left;padding:16px 18px;border-radius:18px;background:rgba(28,12,16,.72);border:1px solid var(--cream-faint);backdrop-filter:blur(12px);max-width:270px}
+.badge b{font-family:var(--display);font-weight:500;font-size:13px;letter-spacing:.02em;text-transform:uppercase;line-height:1.35;display:block}
+.badge .row{display:flex;align-items:center;gap:10px;margin-top:12px;font-size:12px;color:var(--cream-dim)}
+.avs{display:flex}
+.avs i{width:28px;height:28px;border-radius:50%;border:2px solid var(--ink-2);margin-left:-8px;background:var(--wine);display:grid;place-items:center;font-style:normal;font-family:var(--display);font-size:10px}
+.avs i:first-child{margin-left:0}
+.avs i:nth-child(2){background:#7a1a2d}.avs i:nth-child(3){background:#3d0410}
+@media (max-width:600px){.badge{display:none}}
+
+/* SECTIONS */
+section{padding-block:clamp(70px,10vw,130px)}
+.head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:clamp(36px,5vw,60px)}
+.head .t{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.head h2{font-size:clamp(28px,4vw,50px)}
+.head p{max-width:46ch;color:var(--cream-dim);font-size:15px}
+.center{text-align:center;justify-content:center}
+.center .t{flex-direction:column}
+
+/* SOBRE (creme) */
+.about{background:var(--cream);color:var(--wine);border-radius:clamp(24px,4vw,48px)}
+.about .tag{background:rgba(87,6,23,.08);color:var(--wine);border-color:rgba(87,6,23,.25)}
+.about .tag::before{background:var(--wine)}
+.about-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(30px,6vw,90px);align-items:start}
+.about h2{font-size:clamp(30px,4.4vw,58px);margin-top:20px}
+.about .lead{font-size:clamp(17px,1.6vw,20px);line-height:1.55}
+.about .lead strong{font-weight:600}
+.about .copy{display:grid;gap:18px;color:rgba(87,6,23,.82)}
+.about .close{font-family:var(--display);font-size:clamp(16px,1.6vw,19px);letter-spacing:-.02em;color:var(--wine);padding-top:18px;border-top:1px solid rgba(87,6,23,.2)}
+.about-photo{margin-top:clamp(40px,6vw,70px);border-radius:var(--radius);overflow:hidden;aspect-ratio:16/8;max-width:100%}
+.about-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 35%}
+.mv{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:clamp(40px,6vw,70px)}
+.mv article{background:var(--wine);color:var(--cream);border-radius:var(--radius);padding:clamp(24px,3vw,36px);display:grid;gap:14px;align-content:start}
+.mv article:nth-child(2){background:transparent;color:var(--wine);border:1.5px solid var(--wine)}
+.mv h3{font-size:14px;letter-spacing:.14em;text-transform:uppercase;font-weight:500}
+.mv p{font-size:clamp(16px,1.5vw,19px);line-height:1.5}
+@media (max-width:820px){.about-grid,.mv{grid-template-columns:1fr}}
+
+/* SERVIÇOS */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{background:var(--ink-2);border:1px solid var(--ink-3);border-radius:var(--radius);padding:clamp(24px,2.6vw,32px);display:flex;flex-direction:column;gap:18px;min-width:0;transition:border-color .25s, transform .25s}
+.card:hover{border-color:var(--wine-hi);transform:translateY(-4px)}
+.ico{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;background:rgba(140,22,48,.25);border:1px solid rgba(140,22,48,.6)}
+.ico svg{width:22px;height:22px}
+.ico img{width:26px;height:26px;object-fit:contain}
+.card .ico{width:58px;height:58px;border-radius:16px;background:var(--wine)}
+.card .ico img{width:32px;height:32px}
+.card h3{font-size:clamp(18px,1.7vw,22px);margin-top:28px}
+.card p{color:var(--cream-dim);font-size:15px}
+.card p strong{color:var(--cream);font-weight:600}
+.card .more{margin-top:auto;padding-top:14px;border-top:1px solid var(--ink-3);display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:13px;font-weight:600}
+.card .more .arr{flex:none;display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:var(--wine);transition:.2s}
+.card .more:hover .arr{background:var(--cream);color:var(--wine)}
+@media (max-width:980px){.cards{grid-template-columns:1fr}}
+
+/* MÉTODO (bento, como "Our Specialities") */
+.bento{display:grid;grid-template-columns:1.35fr 1fr;gap:16px}
+.tile{border-radius:var(--radius);padding:clamp(24px,3vw,38px);min-height:300px;display:flex;flex-direction:column;justify-content:space-between;gap:24px;position:relative;overflow:hidden;min-width:0}
+.tile .big{font-family:var(--display);font-size:clamp(34px,5vw,68px);letter-spacing:-.04em;line-height:1}
+.tile .lbl{font-family:var(--display);font-size:13px;text-transform:uppercase;letter-spacing:.04em;margin-top:8px}
+.tile p{font-size:15px;max-width:44ch}
+.t1{background:linear-gradient(90deg,rgba(18,7,9,.92) 0%,rgba(18,7,9,.55) 55%,rgba(18,7,9,.15) 100%),url(assets/foto-gravando.webp) 70% 30%/cover,var(--ink-2);border:1px solid var(--ink-3)}
+.t1 p,.t2 p{color:var(--cream-dim)}
+.t2{background:var(--ink-2);border:1px solid var(--ink-3)}
+.t3{background:linear-gradient(rgba(87,6,23,.7),rgba(87,6,23,.7)),url(assets/bg-pattern-vinho.jpg) center/520px repeat}
+.t4{background:var(--cream);color:var(--wine);text-align:right;align-items:flex-end}
+.pills{display:flex;flex-wrap:wrap;gap:10px;align-content:center;justify-content:center;flex:1}
+.pills span{font-size:13px;font-weight:600;padding:8px 16px;border-radius:999px;background:var(--cream);color:var(--wine);transform:rotate(var(--r,0deg));box-shadow:0 6px 18px rgba(0,0,0,.25)}
+@media (max-width:820px){.bento{grid-template-columns:1fr}.tile{min-height:240px}}
+
+/* VALORES */
+.values{position:relative;border-radius:clamp(24px,4vw,48px);overflow:hidden;background:radial-gradient(70% 90% at 50% 0%,rgba(140,22,48,.55),transparent 70%),var(--ink-2);border:1px solid var(--ink-3)}
+.vgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.v{text-align:center;display:grid;justify-items:center;gap:12px;padding:20px 10px}
+.v .ico{border-radius:50%;width:54px;height:54px}
+.v h3{font-size:16px}
+.v p{font-size:14px;color:var(--cream-dim);max-width:24ch}
+@media (max-width:820px){.vgrid{grid-template-columns:1fr 1fr}}
+@media (max-width:420px){.vgrid{grid-template-columns:1fr}}
+
+/* EQUIPE (creme) */
+.team{background:var(--cream);color:var(--wine);border-radius:clamp(24px,4vw,48px)}
+.team .head p{color:rgba(87,6,23,.75)}
+.team .tag{background:rgba(87,6,23,.08);color:var(--wine);border-color:rgba(87,6,23,.25)}
+.team .tag::before{background:var(--wine)}
+.people{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.person{display:grid;gap:16px;min-width:0;align-content:start}
+.photo{position:relative;aspect-ratio:4/5;border-radius:var(--radius);overflow:hidden;background:linear-gradient(160deg,var(--wine-hi),var(--wine) 55%,#2a020a);max-width:100%}
+.photo img{width:100%;height:100%;object-fit:cover}
+.photo .ph{position:absolute;inset:0;display:grid;place-items:center;align-content:center;gap:8px;color:var(--cream)}
+.photo .ph b{font-family:var(--display);font-size:clamp(70px,9vw,120px);font-weight:300;line-height:1;opacity:.9}
+.photo .ph small{font-size:11px;letter-spacing:.14em;text-transform:uppercase;opacity:.7}
+.photo .ig{position:absolute;left:14px;bottom:14px;display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;padding:8px 14px;border-radius:999px;background:var(--cream);color:var(--wine);transition:.2s}
+.photo .ig:hover{background:var(--wine);color:var(--cream)}
+.person h3{font-size:clamp(20px,2vw,26px)}
+.person .role{font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;margin-top:6px}
+.person p{color:rgba(87,6,23,.8);font-size:15px}
+@media (max-width:900px){.people{grid-template-columns:1fr;max-width:460px;margin-inline:auto}}
+
+/* CONTATO */
+.cta{position:relative;overflow:hidden;border-radius:clamp(24px,4vw,48px);background:linear-gradient(rgba(87,6,23,.88),rgba(87,6,23,.88)),url(assets/bg-curva-vinho.jpg) right center/cover,var(--wine);padding:clamp(48px,8vw,100px) clamp(20px,5vw,60px);text-align:center;display:grid;justify-items:center;gap:22px}
+.cta h2{font-size:clamp(28px,4.6vw,60px);max-width:18ch}
+.cta p{max-width:56ch;color:var(--cream-dim);font-size:clamp(15px,1.4vw,17px)}
+.cta .btns{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:8px}
+.phone{font-family:var(--display);font-size:clamp(16px,2vw,22px);letter-spacing:-.01em;user-select:all}
+
+/* FOOTER */
+footer{padding-block:60px 40px}
+.foot{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:30px;padding-bottom:40px;border-bottom:1px solid var(--ink-3)}
+.foot h4{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--cream-dim);margin:0 0 14px;font-weight:600}
+.foot ul{list-style:none;margin:0;padding:0;display:grid;gap:8px;font-size:15px}
+.foot ul a:hover{color:var(--wine-hi)}
+.foot .slogan{font-family:var(--display);font-size:clamp(18px,2vw,24px);letter-spacing:-.02em;margin-top:18px;max-width:18ch}
+.legal{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-top:24px;font-size:13px;color:var(--cream-dim)}
+@media (max-width:760px){.foot{grid-template-columns:1fr}}
+
+/* WhatsApp flutuante */
+.wa-float{position:fixed;right:18px;bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:60;width:58px;height:58px;border-radius:50%;display:grid;place-items:center;background:#25d366;color:#fff;box-shadow:0 10px 30px rgba(0,0,0,.4);transition:transform .2s}
+.wa-float:hover{transform:scale(1.08)}
+.wa-float svg{width:30px;height:30px}
+
+/* animação de entrada: parte de um estado visível */
+.reveal{transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.reveal.pre{transform:translateY(24px)}
+@media (prefers-reduced-motion:reduce){.marquee span{animation:none}.reveal,.reveal.pre{transform:none;transition:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a href="#inicio" class="logo" aria-label="Zanis, início">
+      <img src="assets/logo-zanis-creme.png" alt="Zanis Marketing">
+    </a>
+    <nav class="menu" aria-label="Seções">
+      <a href="#inicio" class="on">Início</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#servicos">Serviços</a>
+      <a href="#metodo">Método</a>
+      <a href="#equipe">Equipe</a>
+      <a href="#contato">Contato</a>
+    </nav>
+    <a class="btn" data-wa href="#" target="_blank" rel="noopener"><span class="lbl">Falar no WhatsApp</span><span class="arr"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a>
+  </div>
+</header>
+
+<main id="inicio">
+  <!-- HERO -->
+  <section class="hero" style="padding-bottom:0">
+    <div class="wrap">
+      <h1>Para marcas que querem ser <span class="hl">memoráveis.</span></h1>
+      <p class="sub">No encontro entre organização e estratégia, a Zanis une planejamento sólido a uma linguagem visual autoral.</p>
+      <a class="btn" href="#contato">Agendar diagnóstico<span class="arr"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a>
+    </div>
+    <div class="stage">
+      <div class="marquee" aria-hidden="true"><span>Agência Zanis · Estratégia · Conteúdo · </span><span>Agência Zanis · Estratégia · Conteúdo · </span></div>
+      <div class="founders">
+        <img src="assets/fundadoras-capa.webp" alt="Julia, Giovanna e Natasha, fundadoras da Zanis" fetchpriority="high">
+      </div>
+      <div class="badge">
+        <b>Planejamento antes da execução</b>
+        <div class="row">
+          <div class="avs"><i>J</i><i>G</i><i>N</i></div>
+          <a href="https://www.instagram.com/agenciazanis/" target="_blank" rel="noopener">@agenciazanis</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBRE -->
+  <div class="wrap" id="sobre">
+    <section class="about reveal" style="padding-inline:clamp(20px,5vw,70px)">
+      <div class="about-grid">
+        <div>
+          <span class="tag">Sobre nós</span>
+          <h2>Marcas não nascem do improviso.</h2>
+        </div>
+        <div class="copy">
+          <p class="lead">Nosso propósito é transformar empresas em <strong>marcas memoráveis</strong>, com identidade, autoridade e foco em resultados.</p>
+          <p>Acreditamos que marcas não nascem do improviso, mas da harmonia entre visão técnica e sensibilidade. Priorizamos a escuta antes da ação e o planejamento antes da execução. Atuamos de forma estratégica e responsável, pois sabemos que, por trás de um projeto, existe uma história, um investimento e um desejo de crescimento.</p>
+          <p class="close">Se você busca constância, direção e profissionalismo, está no lugar certo.</p>
+        </div>
+      </div>
+      <figure class="about-photo" style="margin-inline:0;margin-bottom:0"><img src="assets/foto-equipe-pb.webp" alt="Julia, Giovanna e Natasha trabalhando juntas" loading="lazy"></figure>
+      <div class="mv">
+        <article><h3>Missão</h3><p>Impulsionar o crescimento estratégico de empresas por meio de planejamento e performance, criando conteúdos humanizados que geram conexão através do estudo e do propósito.</p></article>
+        <article><h3>Visão</h3><p>Ser a agência de referência em conteúdo estratégico e autoral, reconhecida por transformar marcas através de processos exclusivos, inteligência de mercado e posicionamento sólido.</p></article>
+      </div>
+    </section>
+  </div>
+
+  <!-- SERVIÇOS -->
+  <section id="servicos">
+    <div class="wrap">
+      <div class="head">
+        <div class="t"><span class="tag">Serviços</span><h2>O que fazemos</h2></div>
+        <a class="btn ghost" data-wa href="#" target="_blank" rel="noopener">Falar com a equipe<span class="arr"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a>
+      </div>
+      <div class="cards">
+        <article class="card reveal">
+          <div class="ico"><img src="assets/icon-chat.png" alt=""></div>
+          <h3>Gestão de redes sociais</h3>
+          <p>Não se trata apenas de "estar" presente, mas de ocupar o digital com intenção. Uma gestão eficiente exige estratégia, consistência e uma narrativa que faça sentido para o seu público.</p>
+          <p>Começamos com o diagnóstico do momento da sua empresa e a análise de mercado. Estruturamos a linha de comunicação, desenvolvemos o planejamento mensal, produzimos conteúdos (reels, carrosséis e estáticos), organizamos o cronograma de postagens e monitoramos os indicadores de performance. <strong>É gestão com método, coerência e visão de crescimento.</strong></p>
+          <a class="more" data-wa href="#" target="_blank" rel="noopener">Quero posicionar minha marca com estratégia.<span class="arr"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a>
+        </article>
+        <article class="card reveal">
+          <div class="ico"><img src="assets/icon-laptop.png" alt=""></div>
+          <h3>Tráfego pago</h3>
+          <p>O crescimento orgânico constrói base, mas o tráfego pago acelera a escala com investimento inteligente. Nosso foco é colocar sua marca diante das pessoas certas, no momento exato da jornada de compra.</p>
+          <p>Estruturamos campanhas com objetivos claros: reconhecimento, geração de leads e conversões diretas. Definimos as plataformas, monitoramos o desempenho em tempo real e ajustamos rotas para otimizar o seu ROI. <strong>Relatórios transparentes que mostram onde sua marca está e o quanto ela pode evoluir.</strong></p>
+          <a class="more" data-wa href="#" target="_blank" rel="noopener">Quero acelerar meus resultados com inteligência.<span class="arr"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a>
+        </article>
+        <article class="card reveal">
+          <div class="ico"><img src="assets/icon-claquete.png" alt=""></div>
+          <h3>Captação e produção de conteúdo</h3>
+          <p>Uma comunicação potente depende de uma identidade visual forte. Na Zanis, a captação de conteúdo é guiada por direção criativa e intenção estratégica.</p>
+          <p>Antes da câmera ligar, alinhamos os objetivos e o storytelling que será aplicado. Produzimos e editamos vídeos e fotos para que cada material sustente a narrativa do seu negócio. <strong>Criamos ativos visuais que transformam a percepção da sua marca no mercado.</strong></p>
+          <a class="more" data-wa href="#" target="_blank" rel="noopener">Quero elevar o nível visual da minha marca.<span class="arr"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- MÉTODO -->
+  <section id="metodo" style="padding-top:0">
+    <div class="wrap">
+      <div class="head">
+        <div class="t"><span class="tag">Método</span><h2>Como trabalhamos</h2></div>
+        <p>Cada projeto segue a mesma ordem: entender o seu momento, planejar com inteligência de mercado e só então executar e medir.</p>
+      </div>
+      <div class="bento">
+        <div class="tile t1 reveal">
+          <div><div class="big">Escuta</div><div class="lbl">antes da ação</div></div>
+          <p>O diagnóstico do momento da sua empresa e a análise de mercado vêm primeiro. É daí que sai a linha de comunicação.</p>
+        </div>
+        <div class="tile t2 reveal">
+          <div><div class="big">Plano</div><div class="lbl">antes da execução</div></div>
+          <p>Planejamento mensal, cronograma de postagens e objetivos claros para cada campanha.</p>
+        </div>
+        <div class="tile t3 reveal">
+          <div class="pills" aria-label="O que entregamos">
+            <span style="--r:-6deg">Diagnóstico</span><span style="--r:4deg">Análise de mercado</span><span style="--r:-2deg">Planejamento mensal</span>
+            <span style="--r:5deg">Reels</span><span style="--r:-4deg">Carrosséis</span><span style="--r:3deg">Estáticos</span>
+            <span style="--r:-5deg">Campanhas</span><span style="--r:2deg">Storytelling</span><span style="--r:-3deg">Relatórios</span>
+          </div>
+        </div>
+        <div class="tile t4 reveal">
+          <div><div class="lbl">Foco em</div><div class="big">Resultado</div></div>
+          <p>Monitoramos os indicadores de performance e ajustamos rotas para otimizar o seu retorno sobre investimento.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VALORES -->
+  <div class="wrap">
+    <section class="values reveal" style="padding-inline:clamp(20px,4vw,50px)">
+      <div class="head center"><div class="t"><span class="tag">Valores</span><h2>O que nos guia</h2></div></div>
+      <div class="vgrid">
+        <div class="v"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></svg></div><h3>Organização</h3><p>Processos claros do diagnóstico ao relatório.</p></div>
+        <div class="v"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 9a5 5 0 1 1 9 3c-1.5 1.5-2 2.5-2 4a3 3 0 0 1-5 2"/><path d="M10 10a2 2 0 1 1 3 1.7"/></svg></div><h3>Escuta ativa</h3><p>Entendemos o seu momento antes de propor qualquer coisa.</p></div>
+        <div class="v"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></div><h3>Transparência</h3><p>Relatórios que mostram onde sua marca está.</p></div>
+        <div class="v"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg></div><h3>Constância</h3><p>Presença com intenção, mês após mês.</p></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- EQUIPE -->
+  <section id="equipe">
+    <div class="wrap">
+      <div class="team reveal" style="padding:clamp(48px,7vw,100px) clamp(20px,5vw,70px)">
+        <div class="head">
+          <div class="t"><span class="tag">Nosso time</span><h2>Quem está por trás da estratégia</h2></div>
+        </div>
+        <div class="people">
+          <article class="person">
+            <div class="photo">
+              <img src="assets/julia.webp" alt="Julia Trevizan" loading="lazy">
+              <a class="ig" href="https://www.instagram.com/julia.trevizan/" target="_blank" rel="noopener"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/></svg>@julia.trevizan</a>
+            </div>
+            <div><h3>Julia Trevizan</h3><div class="role">Direção Estratégica e Criativa</div></div>
+            <p>Responsável pelo posicionamento, estratégia e direção conceitual dos projetos.</p>
+          </article>
+          <article class="person">
+            <div class="photo">
+              <img src="assets/giovanna.webp" alt="Giovanna Iris" loading="lazy">
+              <a class="ig" href="https://www.instagram.com/giovana_iris/" target="_blank" rel="noopener"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/></svg>@giovana_iris</a>
+            </div>
+            <div><h3>Giovanna Iris</h3><div class="role">Direção de Operações e Tráfego Pago</div></div>
+            <p>Responsável pela organização dos processos, atendimento e performance das campanhas.</p>
+          </article>
+          <article class="person">
+            <div class="photo">
+              <img src="assets/natasha.webp" alt="Natasha Brito" loading="lazy">
+              <a class="ig" href="https://www.instagram.com/falanatasha/" target="_blank" rel="noopener"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/></svg>@falanatasha</a>
+            </div>
+            <div><h3>Natasha Brito</h3><div class="role">Produção Visual e Edição</div></div>
+            <p>Responsável pela execução das artes e edição de vídeos.</p>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTATO -->
+  <section id="contato" style="padding-top:0">
+    <div class="wrap">
+      <div class="cta reveal">
+        <span class="tag" style="background:rgba(238,235,228,.12);border-color:rgba(238,235,228,.3)">Contato</span>
+        <h2>Vamos dar o próximo passo na história da sua marca?</h2>
+        <p>Se você sente que sua empresa tem potencial para crescer, mas falta clareza no caminho, nós podemos ajudar. Agende um diagnóstico estratégico para analisarmos o seu momento atual e traçarmos uma rota de crescimento.</p>
+        <div class="btns">
+          <a class="btn light" data-wa href="#" target="_blank" rel="noopener">Agendar reunião<span class="arr"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a>
+          <a class="btn ghost" data-wa href="#" target="_blank" rel="noopener">Falar no WhatsApp<span class="arr"><svg class="i" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2z"/></svg></span></a>
+        </div>
+        <div class="phone">+55 21 96658-5659</div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a href="#inicio" class="logo"><img src="assets/logo-zanis-creme.png" alt="Zanis Marketing"></a>
+        <p class="slogan">Para marcas que querem ser memoráveis.</p>
+      </div>
+      <div>
+        <h4>Navegue</h4>
+        <ul><li><a href="#sobre">Sobre</a></li><li><a href="#servicos">Serviços</a></li><li><a href="#equipe">Equipe</a></li><li><a href="#contato">Contato</a></li></ul>
+      </div>
+      <div>
+        <h4>Fale com a gente</h4>
+        <ul>
+          <li><a data-wa href="#" target="_blank" rel="noopener">+55 21 96658-5659</a></li>
+          <li><a href="https://www.instagram.com/agenciazanis/" target="_blank" rel="noopener">@agenciazanis</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="legal"><span>© <span id="ano">2026</span> Agência Zanis. Todos os direitos reservados.</span><span>@agenciazanis</span></div>
+  </div>
+</footer>
+
+<a class="wa-float" data-wa href="#" target="_blank" rel="noopener" aria-label="Falar com a Zanis no WhatsApp">
+  <svg viewBox="0 0 32 32" fill="currentColor"><path d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3zm0 23.7c-2 0-4-.6-5.7-1.6l-.4-.2-3.9 1 1-3.8-.3-.4A10.7 10.7 0 1 1 16 26.7zm5.9-8c-.3-.2-1.9-1-2.2-1-.3-.1-.5-.2-.7.2l-1 1.2c-.2.2-.4.2-.7.1a8.8 8.8 0 0 1-4.4-3.8c-.3-.6.3-.5.9-1.7.1-.2 0-.4 0-.5l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.8s1.2 3.2 1.4 3.5c.2.2 2.4 3.6 5.8 5 2.1.9 3 1 4 .8.7-.1 1.9-.8 2.2-1.5.3-.8.3-1.4.2-1.5l-.6-.3z"/></svg>
+</a>
+
+<script>
+  // Mesmo link de WhatsApp em todos os botões
+  var WA = "https://wa.me/5521966585659?text=" + encodeURIComponent("Olá, quero saber mais sobre a agência de vocês");
+  document.querySelectorAll("[data-wa]").forEach(function(a){ a.href = WA; });
+  document.getElementById("ano").textContent = new Date().getFullYear();
+
+  // Destaca o item do menu da seção visível
+  var links = document.querySelectorAll(".menu a");
+  var ids = ["inicio","sobre","servicos","metodo","equipe","contato"];
+  window.addEventListener("scroll", function(){
+    var cur = "inicio";
+    ids.forEach(function(id){ var el=document.getElementById(id); if(el && el.getBoundingClientRect().top < 140) cur=id; });
+    links.forEach(function(l){ l.classList.toggle("on", l.getAttribute("href")==="#"+cur); });
+  }, {passive:true});
+
+  // Leve subida ao entrar na tela (o conteúdo já está visível)
+  if ("IntersectionObserver" in window && !matchMedia("(prefers-reduced-motion: reduce)").matches){
+    var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.remove("pre"); io.unobserve(e.target);} }); }, {threshold:.12});
+    document.querySelectorAll(".reveal").forEach(function(el){ if(el.getBoundingClientRect().top > innerHeight){ el.classList.add("pre"); io.observe(el);} });
+  }
+</script>
+</body>
+</html>
