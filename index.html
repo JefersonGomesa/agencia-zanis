@@ -27,8 +27,12 @@
   color-scheme:dark;
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--ink);color:var(--cream);font-family:var(--body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+html{max-width:100%;overflow-x:hidden}
+@supports (overflow:clip){html{overflow-x:clip}}
+main,footer,section{max-width:100vw}
+main{overflow-x:clip}
+body{margin:0;background:var(--ink);color:var(--cream);font-family:var(--body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;max-width:100%;overflow-x:clip}
 img{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
 :focus-visible{outline:2px solid var(--cream);outline-offset:3px;border-radius:6px}
@@ -186,7 +190,7 @@ section{padding-block:clamp(70px,10vw,130px)}
 .svc-text li{font-size:12px;font-weight:600;letter-spacing:.06em;padding:8px 14px;border-radius:999px;border:1px solid var(--ink-3);background:var(--ink-2);color:var(--cream);transition:border-color .25s,background .25s}
 .svc-text li:hover{border-color:var(--wine-hi);background:rgba(87,6,23,.4)}
 .svc-text .btn{justify-self:start;margin-top:8px}
-@media (max-width:900px){.svc{grid-template-columns:1fr}.svc.flip .svc-media{order:0}.svc-media{max-width:460px;justify-self:center}.f1{left:-8px}.f2{right:-8px}}
+@media (max-width:900px){.svc{grid-template-columns:1fr}.svc.flip .svc-media{order:0}.svc-media{max-width:460px;justify-self:center}.f1{left:8px}.f2{right:8px}.svc-media .shape,.svc.flip .svc-media .shape{inset:auto 0 -12px auto;width:60%;height:50%}.svc-media .big{right:4px}.svc.flip .svc-media .big{left:4px}}
 
 /* MÉTODO (bento, como "Our Specialities") */
 .bento{display:grid;grid-template-columns:1.35fr 1fr;gap:16px}
