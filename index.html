@@ -302,7 +302,10 @@ section{padding-block:clamp(70px,10vw,130px)}
 .solo .bio{display:grid;gap:16px}
 .solo .person h3{font-size:clamp(26px,3vw,38px)}
 .solo .person p{font-size:clamp(15px,1.4vw,17px);max-width:36ch}
-@media (max-width:900px){.people{grid-template-columns:1fr;max-width:460px;margin-inline:auto}.solo .person{grid-template-columns:1fr}}
+.people.solo{row-gap:clamp(48px,7vw,96px)}
+.solo .person.rev{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr)}
+.solo .person.rev .photo{order:2}
+@media (max-width:900px){.people{grid-template-columns:1fr;max-width:460px;margin-inline:auto}.solo .person,.solo .person.rev{grid-template-columns:1fr}.solo .person.rev .photo{order:0}}
 
 /* CONTATO */
 .cta{position:relative;overflow:hidden;border-radius:clamp(24px,4vw,48px);background:linear-gradient(rgba(87,6,23,.88),rgba(87,6,23,.88)),url(assets/bg-curva-vinho.jpg) right center/cover,var(--wine);padding:clamp(48px,8vw,100px) clamp(20px,5vw,60px);text-align:center;display:grid;justify-items:center;gap:22px}
@@ -578,7 +581,7 @@ footer{padding-bottom:calc(90px + env(safe-area-inset-bottom,0px))!important}
     <div class="wrap">
       <div class="team reveal" style="padding:clamp(48px,7vw,100px) clamp(20px,5vw,70px)">
         <div class="head">
-          <div class="t"><span class="tag"><span>Liderança</span></span><h2>Quem está por trás da estratégia</h2></div>
+          <div class="t"><span class="tag"><span>Liderança</span></span><h2>Quem está por trás da equipe Zanis</h2></div>
         </div>
         <div class="people solo">
           <article class="person">
@@ -589,6 +592,15 @@ footer{padding-bottom:calc(90px + env(safe-area-inset-bottom,0px))!important}
             <div class="bio">
               <div><h3>Júlia Trevizan</h3><div class="role">Direção Estratégica e Criativa</div></div>
               <p>Responsável pelo posicionamento, estratégia e direção conceitual dos projetos.</p>
+            </div>
+          </article>
+          <article class="person rev">
+            <div class="photo">
+              <img src="assets/jeferson.webp" alt="Jeferson Almeida, especialista em sites e automação da Zanis" loading="lazy">
+            </div>
+            <div class="bio">
+              <div><h3>Jeferson Almeida</h3><div class="role">Sites e Automação</div></div>
+              <p>Responsável pela criação dos sites e pelas automações dos projetos. Constrói páginas que apresentam a marca com clareza e assistentes virtuais que atendem, qualificam contatos e agendam horários.</p>
             </div>
           </article>
         </div>
